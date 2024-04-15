@@ -58,10 +58,9 @@ def submit():
             'Gender': gender,
             'Blood Group': blood_group
         }
-        # Write form data to CSV
+        
         write_csv(form_data)
 
-        # Write form data to JSON
         write_json(form_data)
 
         medical_condition = get_medical_condition(blood_group)
