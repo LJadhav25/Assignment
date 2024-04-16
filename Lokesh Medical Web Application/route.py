@@ -34,14 +34,14 @@ def write_json(data):
 def get_medical_condition(blood_group):
 
     medical_conditions = {
-        'A+': 'Higher risk of heart disease and certain types of cancer',
-        'A-': 'Higher risk of Brain disease and certain types of cancer',
-        'B+': 'Higher risk of Kidney disease and certain types of cancer',
-        'B-': 'Higher risk of heart & Cancer disease and certain types of cancer',
-        'AB+': 'Higher risk of heart & Kidney disease and certain types of cancer',
-        'AB-': 'Higher risk of heart disease and certain types of cancer',
-        'O+': 'Higher risk of stomach ulcers and kidney disease',
-        'O-': 'Higher risk of stomach ulcers and kidney disease'
+        'A+': 'Blood Group Type A+ individuals may have a higher risk of developing Arthritis, Asthma, Cancer, and Hypertension.',
+        'A-': 'Blood Group Type A- individuals may be at increased risk of Cancer and Diabetes.',
+        'B+': 'Blood Group Type B+ individuals might have an increased risk of Diabetes and Hypertension.',
+        'B-': 'Blood Group Type B- individuals may have a higher risk of Diabetes, Hypertension, and Obesity.',
+        'AB+': 'Blood Group Type AB+ individuals might have a higher risk of Arthritis, Diabetes, and Obesity.',
+        'AB-': 'Blood Group Type AB- individuals may be at higher risk for Diabetes, Hypertension, and Obesity.',
+        'O+': 'Blood Group Type O+ individuals may be at increased risk for Arthritis, Asthma, and Cancer.',
+        'O-': 'Blood Group Type O- individuals might have a higher risk of Arthritis and Obesity.'
     }
     return medical_conditions.get(blood_group, 'Unknown')
 
