@@ -31,19 +31,28 @@ def write_json(data):
         jsonfile.write('\n')
 
 
-def get_medical_condition(blood_group):
-
+def get_medical_condition(gender, blood_group):
     medical_conditions = {
-        'A+': 'Blood Group Type A+ individuals may have a higher risk of developing Arthritis, Asthma, Cancer, and Hypertension.',
-        'A-': 'Blood Group Type A- individuals may be at increased risk of Cancer and Diabetes.',
-        'B+': 'Blood Group Type B+ individuals might have an increased risk of Diabetes and Hypertension.',
-        'B-': 'Blood Group Type B- individuals may have a higher risk of Diabetes, Hypertension, and Obesity.',
-        'AB+': 'Blood Group Type AB+ individuals might have a higher risk of Arthritis, Diabetes, and Obesity.',
-        'AB-': 'Blood Group Type AB- individuals may be at higher risk for Diabetes, Hypertension, and Obesity.',
-        'O+': 'Blood Group Type O+ individuals may be at increased risk for Arthritis, Asthma, and Cancer.',
-        'O-': 'Blood Group Type O- individuals might have a higher risk of Arthritis and Obesity.'
+        ('Female', 'A+'): 'Arthritis',
+        ('Female', 'A-'): 'Arthritis',
+        ('Female', 'AB+'): 'Arthritis',
+        ('Female', 'AB-'): 'Hypertension',
+        ('Female', 'B+'): 'Diabetes',
+        ('Female', 'B-'): 'Diabetes',
+        ('Female', 'O+'): 'Arthritis',
+        ('Female', 'O-'): 'Arthritis',
+        ('Male', 'A+'): 'Asthma',
+        ('Male', 'A-'): 'Diabetes',
+        ('Male', 'AB+'): 'Cancer',
+        ('Male', 'AB-'): 'Cancer',
+        ('Male', 'B+'): 'Diabetes',
+        ('Male', 'B-'): 'Diabetes',
+        ('Male', 'O+'): 'Diabetes',
+        ('Male', 'O-'): 'Arthritis'
     }
-    return medical_conditions.get(blood_group, 'Unknown')
+    key = (gender, blood_group)
+    highest_risk_condition = medical_conditions.get(key, 'Unknown')
+    return highest_risk_condition
 
 
 @app.route('/submit', methods=['POST'])
@@ -63,7 +72,7 @@ def submit():
 
         write_json(form_data)
 
-        medical_condition = get_medical_condition(blood_group)
+        medical_condition = get_medical_condition(gender, blood_group)
 
         return render_template('contact.html', name=name, gender=gender, blood_group=blood_group, medical_condition=medical_condition)
 
